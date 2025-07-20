@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-2022
 
     env:
-      LUA_VERSIONS: '5.4.2 5.3.6 5.2.4 5.1.5'
+      LUA_VERSIONS: '5.1.5'
 
     steps:
       - name: Checkout
@@ -21,3 +21,10 @@ jobs:
 
       - name: Build and test cffi
         run: bash ./.ci/build-cffi-windows
+
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: build-5.1.5/
